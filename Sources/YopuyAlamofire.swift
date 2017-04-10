@@ -2,7 +2,11 @@ import Yopuy
 import Alamofire
 
 public struct AlamofireAdapter: HTTPAdapter {
-    public let manager: SessionManager
+    private let manager: SessionManager
+
+    public init(_ manager: SessionManager) {
+      self.manager = manager
+    }
 
     public func get(path: String, query: [String: Any]?, callback: @escaping (HTTPAdapterResult) -> Void) {
       let request = manager.request(path, method: .get, parameters: query)
@@ -39,10 +43,4 @@ public struct AlamofireAdapter: HTTPAdapter {
         }
       }
     }
-}
-
-public extension SessionManager {
-  public var yopuyAdapter: AlamofireAdapter {
-    return AlamofireAdapter(manager: self)
-  }
 }
