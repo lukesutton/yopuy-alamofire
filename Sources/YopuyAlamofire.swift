@@ -2,7 +2,7 @@ import Yopuy
 import Alamofire
 
 public struct AlamofireAdapter: HTTPAdapter {
-    let manager: SessionManager
+    public let manager: SessionManager
 
     public func get(path: String, query: [String: Any]?, callback: @escaping (HTTPAdapterResult) -> Void) {
       let request = manager.request(path, method: .get, parameters: query)
