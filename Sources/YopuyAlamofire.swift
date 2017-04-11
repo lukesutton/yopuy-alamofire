@@ -1,5 +1,6 @@
 import Yopuy
 import Alamofire
+import Foundation
 
 public struct AlamofireAdapter: HTTPAdapter {
     private let manager: SessionManager
@@ -8,28 +9,28 @@ public struct AlamofireAdapter: HTTPAdapter {
       self.manager = manager
     }
 
-    public func get(path: String, query: [String: Any]?, callback: @escaping (HTTPAdapterResult) -> Void) {
-      let request = manager.request(path, method: .get, parameters: query)
+    public func get(url: URL, query: [String: Any]?, callback: @escaping (HTTPAdapterResult) -> Void) {
+      let request = manager.request(url, method: .get, parameters: query)
       call(request: request, callback: callback)
     }
 
-    public func post(path: String, body: [String: Any], callback: @escaping (HTTPAdapterResult) -> Void) {
-      let request = manager.request(path, method: .post, parameters: body)
+    public func post(url: URL, body: [String: Any], callback: @escaping (HTTPAdapterResult) -> Void) {
+      let request = manager.request(url, method: .post, parameters: body)
       call(request: request, callback: callback)
     }
 
-    public func put(path: String, body: [String: Any], callback: @escaping (HTTPAdapterResult) -> Void) {
-      let request = manager.request(path, method: .put, parameters: body)
+    public func put(url: URL, body: [String: Any], callback: @escaping (HTTPAdapterResult) -> Void) {
+      let request = manager.request(url, method: .put, parameters: body)
       call(request: request, callback: callback)
     }
 
-    public func patch(path: String, body: [String: Any], callback: @escaping (HTTPAdapterResult) -> Void) {
-      let request = manager.request(path, method: .patch, parameters: body)
+    public func patch(url: URL, body: [String: Any], callback: @escaping (HTTPAdapterResult) -> Void) {
+      let request = manager.request(url, method: .patch, parameters: body)
       call(request: request, callback: callback)
     }
 
-    public func delete(path: String, callback: @escaping (HTTPAdapterResult) -> Void) {
-      let request = manager.request(path, method: .delete)
+    public func delete(url: URL, callback: @escaping (HTTPAdapterResult) -> Void) {
+      let request = manager.request(url, method: .delete)
       call(request: request, callback: callback)
     }
 
